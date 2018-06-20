@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load l10n %}
+{% load tz %}
+{% block head_title %}Ekozmp{% endblock %}
+
+{% block content %}
+    <div class="jumbotron">
+      <div class="container">
+        <h1>{% trans "Welcome to Ekozmp!" %}</h1>
+        <p>{% blocktrans%}
+            Ekozmp helps you crete and share playlists of
+            educational content that you find helpful, inspiring
+            or just plain interesting. Start collecting content
+            you love and never forget where you learned something
+            important.
+           {% endblocktrans %}
+        </p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2 id="local-date">{{today}}</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2 id="non-local-date">{{today|unlocalize}}</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>Time Zones</h2>
+          <p> Bordi: <span id="time-tz">{{now|time:"H:i"}}</span></p>
+          <p> UTC: <span id="time-utc">{{now|utc|time:"H:i"}}</span></p>
+          <p> New York: <span id="time-ny">
+                     {{now|timezone:"America/New_York"|time:"H:i"}}</span></p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+      </div>
+    </div>
+{% endblock %}

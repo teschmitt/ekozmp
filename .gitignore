@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*$py.class
+instance/
+.webassets-cache
+*.sublime-workspace
+*.sublime-project
+*.sqlite3
+*.log
+.coverage
+htmlcov

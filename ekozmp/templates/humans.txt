@@ -1,0 +1,16 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Thomas Schmitt -- Developer -- @abuschmiti
+
+# THANKS
+
+    Praise the Lord!
+
+# TECHNOLOGY COLOPHON
+    Django
+    HTML5 Boilerplate, CSS3
+    Twitter Bootstrap
+    jQuery, Modernizr
