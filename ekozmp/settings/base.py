@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'ekozmp.apps.accounts',
+    'ekozmp.apps.products',
 ]
 
 MIDDLEWARE = [
