@@ -1,5 +1,6 @@
 # from django.contrib.auth.decorators import login_required
 from django.conf.urls import url
+from django.urls import include, path
 from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib.auth import views as auth_views
@@ -46,6 +47,8 @@ urlpatterns += i18n_patterns(
     url(r'^settings/password/done/$', auth_views.PasswordChangeDoneView.as_view(
         template_name='accounts/password_change_done.html'),
         name='password_change_done'),
+
+    path('products/', include('ekozmp.apps.products.urls')),
 )
 
 

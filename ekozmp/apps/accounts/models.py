@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
+import pytz
 from django.db import models
 from django.conf import settings
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
-from . import managers
+from timezone_field import TimeZoneField
 
+from . import managers
 from ekozmp.apps.products.models import Product
 
 
@@ -40,7 +42,7 @@ class Profile(models.Model):
 
     # Attributes - Optional
     language = models.CharField(max_length=10, blank=True)
-    timezone = models.CharField(max_length=32, blank=True)
+    timezone = TimeZoneField(default='Europe/Berlin')
     """
     Weitere Felder:
     birthday

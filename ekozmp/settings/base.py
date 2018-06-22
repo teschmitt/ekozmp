@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'timezone_field',
     'widget_tweaks',
     'ekozmp.apps.accounts',
     'ekozmp.apps.products',
