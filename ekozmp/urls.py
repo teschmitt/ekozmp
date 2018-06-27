@@ -48,7 +48,7 @@ urlpatterns += i18n_patterns(
         template_name='accounts/password_change_done.html'),
         name='password_change_done'),
 
-    path('products/', include('ekozmp.apps.products.urls')),
+    path('inventory/', include('ekozmp.apps.inventory.urls')),
 )
 
 

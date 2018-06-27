@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from timezone_field import TimeZoneField
 
 from . import managers
-from ekozmp.apps.products.models import Product
+from ekozmp.apps.inventory.models import InventoryProduct
 
 
 """
@@ -89,11 +89,3 @@ class ProfileImage(models.Model):
 
     def __unicode__(self):
         return str(self.title)
-
-
-class ProfilePurchase(models.Model):
-    profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
-    products = models.ManyToManyField(Product)
-
-    def __unicode__(self, ):
-        return self.profileprofile.username

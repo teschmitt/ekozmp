@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 
-from .models import Product, ProductImage
+from .models import InventoryProduct
 
 
 class ProductListView(ListView):
-    model = Product
+    model = InventoryProduct
 
