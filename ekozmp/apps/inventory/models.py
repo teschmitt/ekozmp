@@ -5,7 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 
 class Brand(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
-    logo = models.ImageField(upload_to='ekozmp/static/img/site/brands/', blank=True)
+    logo = models.ImageField(
+        upload_to='ekozmp/static/img/site/brands/', blank=True)
 
     class Meta:
         verbose_name = 'Brand'
@@ -43,8 +44,10 @@ class ProductVariant(models.Model):
     def __str__(self):
         return self.sku
 
+
 class ProductOption(models.Model):
-    name = models.CharField(max_length=20, null=False, blank=False, unique=True)
+    name = models.CharField(
+        max_length=20, null=False, blank=False, unique=True)
 
     def __str__(self):
         return self.name
@@ -52,7 +55,9 @@ class ProductOption(models.Model):
 
 class ProductOptionValue(models.Model):
     product = models.ForeignKey(InventoryProduct, on_delete=models.CASCADE)
-    option = models.ForeignKey(ProductOption, on_delete=models.CASCADE, related_name='product_option_values')
+    option = models.ForeignKey(
+        ProductOption, on_delete=models.CASCADE,
+        related_name='product_option_values')
     value = models.CharField(max_length=20, null=False, blank=False)
 
     def __str__(self):
@@ -64,7 +69,8 @@ class ProductOptionValue(models.Model):
 
 class ProductVariantValue(models.Model):
     product = models.ForeignKey(InventoryProduct, on_delete=models.CASCADE)
-    option_value = models.ForeignKey(ProductOptionValue, on_delete=models.CASCADE)
+    option_value = models.ForeignKey(
+        ProductOptionValue, on_delete=models.CASCADE)
     variant = models.ForeignKey(ProductVariant, on_delete=models.CASCADE)
 
     def __str__(self):

@@ -10,3 +10,5 @@ instance/
 .coverage
 htmlcov
 profileimages/*
+img/sites/*
+
