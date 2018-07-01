@@ -19,7 +19,7 @@ class Brand(models.Model):
 class InventoryProduct(models.Model):
     name = models.CharField(max_length=180)
     brand = models.ForeignKey(
-        Brand, null=True, related_name="product_brand",
+        Brand, null=True, related_name="inventory_products",
         on_delete=models.CASCADE)
     description = models.CharField(max_length=500)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
