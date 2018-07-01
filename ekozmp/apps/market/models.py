@@ -2,7 +2,7 @@
 from django.db import models
 # from django.utils.translation import ugettext_lazy as _
 
-from ekozmp.apps.inventory.models import ProductVariant
+from ekozmp.apps.inventory.models import InventoryProduct
 from ekozmp.apps.designs.models import Design
 from ekozmp.apps.accounts.models import Profile
 
@@ -24,9 +24,16 @@ class Shop(models.Model):
         Profile, null=False, blank=False, on_delete=models.CASCADE,
         related_name='shops')
     name = models.CharField(max_length=120, blank=False, null=False)
+    slug = models.SlugField(max_length=140, unique=True, blank=True, null=False)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
     active = models.BooleanField(default=True)
+
+    def get_products(self):
+        return self.seller_products.filter(shop=self)
+
+    def __str__(self):
+        return f'{self.owner}: {self.name}'
 
 
 class SellerProduct(models.Model):
@@ -34,7 +41,7 @@ class SellerProduct(models.Model):
         Profile, null=False, blank=False, on_delete=models.CASCADE,
         related_name='seller_products')
     base = models.ForeignKey(
-        ProductVariant, null=False, blank=False, on_delete=models.CASCADE,
+        InventoryProduct, null=False, blank=False, on_delete=models.CASCADE,
         related_name='seller_products')
     design = models.ForeignKey(
         Design, null=False, blank=False, on_delete=models.CASCADE,
@@ -43,7 +50,11 @@ class SellerProduct(models.Model):
         Shop, null=False, blank=False, on_delete=models.CASCADE,
         related_name='seller_products')
     name = models.CharField(max_length=120, blank=False, null=False)
+    slug = models.SlugField(max_length=140, unique=True, blank=True, null=False)
     markup = models.DecimalField(max_digits=20, decimal_places=2)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
     active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'{self.owner}: {self.name}'

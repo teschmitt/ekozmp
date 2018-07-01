@@ -49,6 +49,7 @@ urlpatterns += i18n_patterns(
         name='password_change_done'),
 
     path('inventory/', include('ekozmp.apps.inventory.urls')),
+    path('market/', include('ekozmp.apps.market.urls')),
 )
 
 
