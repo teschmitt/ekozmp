@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'ekozmp.apps.accounts',
     'ekozmp.apps.inventory',
+    'ekozmp.apps.market',
+    'ekozmp.apps.designs',
 ]
 
 MIDDLEWARE = [
