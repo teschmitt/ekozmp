@@ -5,5 +5,5 @@ from .views import ShopList, ShopProductListView
 
 urlpatterns = [
     path('', ShopList.as_view(), name='shop-list'),
-    path('<int:id>/', ShopProductListView.as_view(), name='shopproduct-list'),
+    path('<slug:slug>/', ShopProductListView.as_view(), name='shopproduct_list'),
 ]

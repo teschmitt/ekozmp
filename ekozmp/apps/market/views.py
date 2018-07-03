@@ -22,6 +22,6 @@ class ShopProductListView(ListView):
         return context
 
     def get_queryset(self):
-        pk = self.kwargs.get('id', None)
-        self.shop = get_object_or_404(Shop, pk=pk)
-        return self.shop.get_products()
+        slug = self.kwargs.get('slug', None)
+        self.shop = get_object_or_404(Shop, slug=slug)
+        return self.shop.products

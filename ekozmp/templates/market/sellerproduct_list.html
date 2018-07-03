@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load l10n %}
+{% load tz %}
+{% block head_title %}Ekozmp{% endblock %}
+
+{% block content %}
+
+
+
+<div class="container">
+      <h1>{{ shop.name }}</h1>
+
+      {% for product in object_list %}
+      <div class="row">
+        <div class="col-md-4">
+          <p>{{ product.base.brand }}: {{ product.base.name }}</p>
+        </div>
+        <div class="col-md-4">
+          <p>{{ product.name }}</p>
+        </div>
+        <div class="col-md-4">
+          <p>{{ product.display_price }} €</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+{% endblock content %}

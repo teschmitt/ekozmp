@@ -2,7 +2,8 @@
 from django.db import models
 # from django.utils.translation import ugettext_lazy as _
 
-from ekozmp.apps.inventory.models import InventoryProduct
+from ekozmp.apps.inventory.models import \
+     InventoryProduct, ProductVariant, ProductVariantValue
 from ekozmp.apps.designs.models import Design
 from ekozmp.apps.accounts.models import Profile
 
@@ -29,8 +30,13 @@ class Shop(models.Model):
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
     active = models.BooleanField(default=True)
 
-    def get_products(self):
+    @property
+    def products(self):
         return self.seller_products.filter(shop=self)
+
+    @property
+    def products_count(self):
+        return self.seller_products.filter(shop=self).count()
 
     def __str__(self):
         return f'{self.owner}: {self.name}'
@@ -55,6 +61,12 @@ class SellerProduct(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
     active = models.BooleanField(default=True)
+
+    @property
+    def display_price(self):
+        p = self.base.product_variant_values.values(
+            'variant__price').aggregate(models.Min('variant__price'))
+        return p['variant__price__min'] + self.markup
 
     def __str__(self):
         return f'{self.owner}: {self.name}'

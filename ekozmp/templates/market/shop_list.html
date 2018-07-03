@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load l10n %}
+{% load tz %}
+{% block head_title %}Ekozmp{% endblock %}
+
+{% block content %}
+
+
+
+<div class="container">
+      <h1>Shops available</h1>
+
+      {% for shop in object_list %}
+      <div class="row">
+        <div class="col-md-4">
+          <p>{{ shop.owner }}</p>
+        </div>
+        <div class="col-md-4">
+          <p><a href="{% url 'shopproduct_list' shop.slug %}">{{ shop.name }}</a></p>
+        </div>
+        <div class="col-md-4">
+          <p>{{ shop.products_count }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+{% endblock content %}

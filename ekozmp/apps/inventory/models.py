@@ -54,7 +54,9 @@ class ProductOption(models.Model):
 
 
 class ProductOptionValue(models.Model):
-    product = models.ForeignKey(InventoryProduct, on_delete=models.CASCADE)
+    product = models.ForeignKey(
+        InventoryProduct, on_delete=models.CASCADE,
+        related_name='product_option_values')
     option = models.ForeignKey(
         ProductOption, on_delete=models.CASCADE,
         related_name='product_option_values')
@@ -68,10 +70,15 @@ class ProductOptionValue(models.Model):
 
 
 class ProductVariantValue(models.Model):
-    product = models.ForeignKey(InventoryProduct, on_delete=models.CASCADE)
+    product = models.ForeignKey(
+        InventoryProduct, on_delete=models.CASCADE,
+        related_name='product_variant_values')
     option_value = models.ForeignKey(
-        ProductOptionValue, on_delete=models.CASCADE)
-    variant = models.ForeignKey(ProductVariant, on_delete=models.CASCADE)
+        ProductOptionValue, on_delete=models.CASCADE,
+        related_name='product_variant_values')
+    variant = models.ForeignKey(
+        ProductVariant, on_delete=models.CASCADE,
+        related_name='product_variant_values')
 
     def __str__(self):
         return f'{self.product} - {self.option_value}: {self.variant}'

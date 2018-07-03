@@ -6,6 +6,7 @@ from ekozmp.apps.market.models import SellerProduct, Shop
 
 
 @receiver(pre_save, sender=SellerProduct)
+@receiver(pre_save, sender=Shop)
 def pre_save_force_unique_slug(sender, instance, *args, **kwargs):
     # so URLs don't change: only set slug if it is empty
     if not instance.slug or len(instance.slug) == 0:
