@@ -68,5 +68,16 @@ class SellerProduct(models.Model):
             'variant__price').aggregate(models.Min('variant__price'))
         return p['variant__price__min'] + self.markup
 
+    def get_options(self):
+        option_list = self.base.product_option_values.values(
+            'option__name',
+            'value')
+        # build a dict with all available options
+        options = [{d['option__name']: d['value']} for d in option_list]
+        # get all distinct option_names:
+        o_keys = set(k for d in options for k in d.keys())
+        # return dict(option_name: [option_values])
+        return {k: [o.get(k) for o in options if k in o.keys()] for k in o_keys}
+
     def __str__(self):
         return f'{self.owner}: {self.name}'
