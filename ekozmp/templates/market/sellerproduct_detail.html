@@ -13,18 +13,18 @@
 
       <div class="row">
         <div class="col-md-4">
-          <p>{{ object.base.brand }}: {{ object.base.name }}</p>
+          <p>{{ product.base.brand }}: {{ product.base.name }}</p>
         </div>
         <div class="col-md-4">
-          <p><a href="{% url 'shopproduct_detail' shop_slug=shop.slug product_slug=object.slug %}">{{ object.name }}</a></p>
+          <p><a href="{% url 'shopproduct_detail' shop_slug=shop.slug product_slug=product.slug %}">{{ product.name }}</a></p>
         </div>
         <div class="col-md-4">
-          <p>{{ object.display_price }} €</p>
+          <p>{{ product.display_price }} €</p>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          {{ object.get_options }}
+          {{ product.options }}
         </div>
       </div>
     </div>

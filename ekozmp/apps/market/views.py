@@ -29,6 +29,8 @@ class ShopProductListView(ListView):
 
 class ShopProductDetailView(DetailView):
 
+    context_object_name = 'product'
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.shop = None

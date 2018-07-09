@@ -68,7 +68,8 @@ class SellerProduct(models.Model):
             'variant__price').aggregate(models.Min('variant__price'))
         return p['variant__price__min'] + self.markup
 
-    def get_options(self):
+    @property
+    def options(self):
         option_list = self.base.product_option_values.values(
             'option__name',
             'value')
