@@ -10,5 +10,5 @@ instance/
 .coverage
 htmlcov
 profileimages/*
-ekozmp/static/img/site/
+ekozmp/static/img/
 

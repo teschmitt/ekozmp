@@ -1,58 +1,18 @@
 {% extends "base.html" %}
-{% load staticfiles %}
 {% load i18n %}
-{% block head_title %}Home{% endblock %}
-
-{% block home_container%}
-    <!-- HOME -->
-    <div id="home">
-        <!-- container -->
-        <div class="container">
-            <!-- home wrap -->
-            <div class="home-wrap">
-                <!-- home slick -->
-                <div id="home-slick">
-                    <!-- banner -->
-                    <div class="banner banner-1">
-                        <img src="{% static 'img/banner01.jpg' %}" alt="">
-                        <div class="banner-caption text-center">
-                            <h1>Bags sale</h1>
-                            <h3 class="white-color font-weak">Up to 50% Discount</h3>
-                            <button class="primary-btn">Shop Now</button>
-                        </div>
-                    </div>
-                    <!-- /banner -->
-
-                    <!-- banner -->
-                    <div class="banner banner-1">
-                        <img src="{% static 'img/banner02.jpg' %}" alt="">
-                        <div class="banner-caption">
-                            <h1 class="primary-color">HOT DEAL<br><span class="white-color font-weak">Up to 50% OFF</span></h1>
-                            <button class="primary-btn">Shop Now</button>
-                        </div>
-                    </div>
-                    <!-- /banner -->
-
-                    <!-- banner -->
-                    <div class="banner banner-1">
-                        <img src="{% static 'img/banner03.jpg' %}" alt="">
-                        <div class="banner-caption">
-                            <h1 class="white-color">New Product <span>Collection</span></h1>
-                            <button class="primary-btn">Shop Now</button>
-                        </div>
-                    </div>
-                    <!-- /banner -->
-                </div>
-                <!-- /home slick -->
-            </div>
-            <!-- /home wrap -->
-        </div>
-        <!-- /container -->
+  <!-- BREADCRUMB -->
+  <div id="breadcrumb">
+    <div class="container">
+      <ul class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li class="active">Blank</li>
+      </ul>
     </div>
-    <!-- /HOME -->
-{% endblock %}
+  </div>
+  <!-- /BREADCRUMB -->
 
-{% block content %}
+{% block home_container %}{% endblock %}
+
     <!-- section -->
     <div class="section">
         <!-- container -->
@@ -867,4 +827,3 @@
         <!-- /container -->
     </div>
     <!-- /section -->
-{% endblock %}

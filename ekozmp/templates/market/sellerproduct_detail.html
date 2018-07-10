@@ -3,11 +3,7 @@
 {% load l10n %}
 {% load tz %}
 {% block head_title %}Ekozmp{% endblock %}
-
 {% block content %}
-
-
-
 <div class="container">
       <h1>{{ shop.name }}</h1>
 
@@ -24,9 +20,17 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          {{ product.options }}
+          <p>Product Options:
         </div>
       </div>
+      {% for k, v in product.options.items %}
+      <div class="row">
+        <div class="col-md-1">{{ k }}</div>
+        {% for o in v %}
+        <div class="col-md-1">{{ o }}</div>
+        {% endfor %}
+      </div>
+      {% endfor %}
     </div>
 
 {% endblock content %}
