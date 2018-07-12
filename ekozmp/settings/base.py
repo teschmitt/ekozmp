@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'ekozmp.apps.inventory',
     'ekozmp.apps.market',
     'ekozmp.apps.designs',
+    'ekozmp.apps.cart',
 ]
 
 MIDDLEWARE = [
