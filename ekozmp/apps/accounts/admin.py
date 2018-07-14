@@ -3,7 +3,7 @@ from . import models
 
 
 @admin.register(models.Profile)
-class Profiledmin(admin.ModelAdmin):
+class ProfileAdmin(admin.ModelAdmin):
     # list_display = ("user", "account_type", "language", "timestamp")
     search_fields = ["user__username"]
 

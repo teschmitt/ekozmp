@@ -74,7 +74,7 @@ class SellerProduct(models.Model):
             variant_options.setdefault(
                 p.variant, {}).update(
                 {p.option_value.option.name.lower(): p.option_value.value.lower()})
-        matching_variants = [k for k, v in variant_options if v == options]
+        matching_variants = [k for k, v in variant_options.items() if v == options]
         if len(matching_variants) > 1:
             # you done fucked up. Add error checking later.
             pass
