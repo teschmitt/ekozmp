@@ -10,15 +10,15 @@
 
   <div class="section">
     <div class="container">
-      <h1>{{ shop.name }}</h1>
+      <h1>{{ products.0.shop.name }}</h1>
 
-      {% for product in object_list %}
+      {% for product in products %}
       <div class="row">
         <div class="col-md-4">
           <p>{{ product.base.brand }}: {{ product.base.name }}</p>
         </div>
         <div class="col-md-4">
-          <p><a href="{% url 'shopproduct_detail' shop_slug=shop.slug product_slug=product.slug %}">{{ product.name }}</a></p>
+          <p><a href="{% url 'shopproduct_detail' shop_slug=product.shop.slug product_slug=product.slug %}">{{ product.name }}</a></p>
         </div>
         <div class="col-md-4">
           <p>{{ product.display_price }} €</p>

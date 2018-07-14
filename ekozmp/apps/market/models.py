@@ -62,6 +62,24 @@ class SellerProduct(models.Model):
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
     active = models.BooleanField(default=True)
 
+    def get_product_variant(self, options):
+        filter_arg = models.Q()
+        for k, v in options.items():
+            filter_arg |= models.Q(option_value__option__name__iexact=k) & models.Q(option_value__value__iexact=v)
+        possible_variants = self.base.product_variant_values.filter(filter_arg)
+        # Build a dict of variants and their corresponding options that were queried from
+        # the db and that match the required options passed in the argument
+        variant_options = {}
+        for p in possible_variants:
+            variant_options.setdefault(
+                p.variant, {}).update(
+                {p.option_value.option.name.lower(): p.option_value.value.lower()})
+        matching_variants = [k for k, v in variant_options if v == options]
+        if len(matching_variants) > 1:
+            # you done fucked up. Add error checking later.
+            pass
+        return matching_variants[0]
+
     @property
     def display_price(self):
         p = self.base.product_variant_values.values(

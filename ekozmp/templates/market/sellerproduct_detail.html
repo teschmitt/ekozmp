@@ -5,32 +5,25 @@
 {% block head_title %}Ekozmp{% endblock %}
 {% block content %}
 <div class="container">
-      <h1>{{ shop.name }}</h1>
+      <h1>{{ product.shop.name }}</h1>
 
       <div class="row">
         <div class="col-md-4">
           <p>{{ product.base.brand }}: {{ product.base.name }}</p>
         </div>
         <div class="col-md-4">
-          <p><a href="{% url 'shopproduct_detail' shop_slug=shop.slug product_slug=product.slug %}">{{ product.name }}</a></p>
+          <p><a href="{% url 'shopproduct_detail' shop_slug=product.shop.slug product_slug=product.slug %}">{{ product.name }}</a></p>
         </div>
         <div class="col-md-4">
           <p>{{ product.display_price }} €</p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <p>Product Options:
-        </div>
-      </div>
-      {% for k, v in product.options.items %}
-      <div class="row">
-        <div class="col-md-1">{{ k }}</div>
-        {% for o in v %}
-        <div class="col-md-1">{{ o }}</div>
-        {% endfor %}
-      </div>
-      {% endfor %}
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {{ add_to_cart_form }}
+        <button type="submit">Add to Cart</button>
+      </form>
     </div>
 
 {% endblock content %}
